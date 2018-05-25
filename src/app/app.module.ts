@@ -6,11 +6,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import {SQLite} from '@ionic-native/sqlite';
+import { DatabaseProvider } from '../providers/database/database';
+import { ClienteProvider } from '../providers/cliente/cliente';
+import { AdcionaClientePage } from '../pages/adciona-cliente/adciona-cliente';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    AdcionaClientePage
   ],
   imports: [
     BrowserModule,
@@ -19,12 +24,16 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    AdcionaClientePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SQLite,
+    DatabaseProvider,
+    ClienteProvider
   ]
 })
 export class AppModule {}
